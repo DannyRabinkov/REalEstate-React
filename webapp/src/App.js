@@ -1,10 +1,12 @@
 import "./App.css";
-import HomePageComp from "./pages/HomePageComp";
+import FooterComp from "./components/footerComp/FooterComp";
+import NavBarComp from "./components/navBarComp/NavBarComp";
 
 function App() {
   return (
     <div className="App">
-      <HomePageComp></HomePageComp>
+      <NavBarComp />
+      <FooterComp />
     </div>
   );
 }
