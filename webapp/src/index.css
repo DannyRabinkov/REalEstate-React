@@ -34,3 +34,8 @@ h2.mainpageheader {
 form {
   text-align: left;
 }
+
+.container h3 {
+  font-family: 'Times New Roman', Times, serif;
+  color: chocolate;
+}

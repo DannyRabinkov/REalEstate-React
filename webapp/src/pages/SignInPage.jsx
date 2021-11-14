@@ -2,7 +2,7 @@ import React from "react";
 import SignInComp from "../components/signHelpers/SignInComp";
 import { GoSignIn } from "react-icons/go";
 
-export default class HomePageComp extends React.Component {
+export default class SignInPage extends React.Component {
   render() {
     return (
       <>
