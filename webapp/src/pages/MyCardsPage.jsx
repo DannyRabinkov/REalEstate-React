@@ -5,7 +5,7 @@ export default class MyCardsPage extends React.Component {
     return (
       <>
         <div className="container">
-          <h1>Hi Im U'r Cards Page!!</h1>
+          <h1 className="mainpageheader">Hi Im U'r Cards Page!!</h1>
         </div>
       </>
     );

@@ -1,11 +1,16 @@
 import React from "react";
+import SignUpComp from "../components/signHelpers/SignUpComp";
+import { MdAppRegistration } from "react-icons/md";
 
 export default class SignUpPage extends React.Component {
   render() {
     return (
       <>
         <div className="container">
-          <h1>Hi Im Sign up page!!</h1>
+          <h2 className="mainpageheader mt-2 mb-2">
+            Sign-Up to create you'r new account! <MdAppRegistration />
+          </h2>
+          <SignUpComp />
         </div>
       </>
     );
