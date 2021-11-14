@@ -23,7 +23,6 @@ const FooterComp = () => (
       </Nav.Item>
       <Nav.Item>
         <Nav.Link
-          a
           href="mailto: rabinkovdanny@gmail.com"
           style={{ color: "aqua" }}
         >
