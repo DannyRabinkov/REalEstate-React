@@ -6,9 +6,14 @@ import SignInPage from "../../pages/SignInPage";
 import BusinessRegPage from "../../pages/BusinessRegPage";
 import MyCardsPage from "../../pages/MyCardsPage";
 import SignUpPage from "../../pages/SignUpPage";
-import AboutPage from "../../pages/AboutPage";
+import LogoApp from "../../logo/logoApp.png";
+import {
+  hideForUser,
+  hideForGuest,
+  logout,
+} from "../../helpers/javascriptHelpers.js";
 
-function NavBarComp() {
+function NavBarComp({ setUserCallback, user }) {
   return (
     <Router>
       <>
@@ -20,37 +25,41 @@ function NavBarComp() {
                 <Navbar.Brand to="/" as={Link}>
                   <img
                     alt=""
-                    src="/logo.svg"
+                    src={LogoApp}
                     width="30"
                     height="30"
                     className="d-inline-block align-top"
                   />{" "}
                   RealEstateNow
                 </Navbar.Brand>
-                <Nav.Link to="AboutPage" as={Link}>
-                  About
-                </Nav.Link>
-                <Nav.Link to="BusinessRegPage" as={Link}>
+                <Nav.Link
+                  to="BusinessRegPage"
+                  as={Link}
+                  hidden={hideForUser(user)}
+                >
                   Business Registration
                 </Nav.Link>
-                <Nav.Link to="MyCardsPage" as={Link}>
+                <Nav.Link
+                  to="MyCardsPage"
+                  as={Link}
+                  hidden={hideForGuest(user)}
+                >
                   My-Cards
                 </Nav.Link>
-                <Nav.Link
-                  className="justify-content-end"
-                  to="SignInPage"
-                  as={Link}
-                >
+              </Nav>
+              <Nav>
+                <Nav.Link to="SignInPage" as={Link} hidden={hideForUser(user)}>
                   Sign-In
                 </Nav.Link>
-                <Nav.Link
-                  className="justify-content-end"
-                  to="SignUpPage"
-                  as={Link}
-                >
+                <Nav.Link to="SignUpPage" as={Link} hidden={hideForUser(user)}>
                   Sign-Up
                 </Nav.Link>
-                <Nav.Link className="justify-content-end" to="/" as={Link}>
+                <Nav.Link
+                  to="/"
+                  as={Link}
+                  hidden={hideForGuest(user)}
+                  onClick={() => logout(setUserCallback)}
+                >
                   Logout
                 </Nav.Link>
               </Nav>
@@ -58,9 +67,6 @@ function NavBarComp() {
           </Container>
         </Navbar>
         <Switch>
-          <Route path="/AboutPage">
-            <AboutPage />
-          </Route>
           <Route path="/BusinessRegPage">
             <BusinessRegPage />
           </Route>
