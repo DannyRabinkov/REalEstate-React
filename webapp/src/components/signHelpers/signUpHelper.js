@@ -1,11 +1,11 @@
 const getElemVal = (id) => document.getElementById(id).value;
 
-export default function validateSignUp(idEmail, idPassword, idName) {
+export default function validateSignUp(idName, idEmail, idPassword) {
   let error = "";
   var data = {
+    name: getElemVal(idName),
     email: getElemVal(idEmail),
     password: getElemVal(idPassword),
-    name: getElemVal(idName),
     biz: false,
   };
 
@@ -24,7 +24,7 @@ export default function validateSignUp(idEmail, idPassword, idName) {
     error += "Must enter  valid email   *";
   }
   if (!data.name || data.name.length < 2) {
-    error += "Name must have at leat two letters";
+    error += "Name must have at least two letters";
   }
 
   return error || data;

@@ -1,8 +1,10 @@
-import validateSignUp from "./signInHelper";
+import validateSignUp from "./signUpHelper";
 import { Form, Button } from "react-bootstrap";
+import { notify } from "react-toastify";
 import { toast } from "react-toastify";
 
-function SignUpComp({ clickHandler = (f) => f }) {
+function SignUpComp({ text = "", clickHandler = (f) => f }) {
+  const notify = (message) => toast(message);
   return (
     <>
       <Form className="col-lg-8 mx-auto">
@@ -26,12 +28,12 @@ function SignUpComp({ clickHandler = (f) => f }) {
           onClick={(e) => {
             e.preventDefault();
             var validatioErrorOrData = validateSignUp(
+              "formBasicName",
               "formBasicEmail",
-              "formBasicPassword",
-              "formBasicName"
+              "formBasicPassword"
             );
             if (typeof validatioErrorOrData == "string") {
-              toast.error(validatioErrorOrData);
+              notify(validatioErrorOrData);
             } else {
               clickHandler(validatioErrorOrData);
             }
