@@ -15,7 +15,7 @@ export default class SignUpPage extends React.Component {
   registerUser = (data) => {
     registerNewAccount(data, (data) => {
       if (data._id) {
-        toast("Account Created Successfully", {
+        toast.success("Account Created Successfully", {
           onClose: () => this.setState({ redirect: true }),
         });
       } else {

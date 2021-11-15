@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import HomePageComp from "../../pages/HomePageComp";
 import SignInPage from "../../pages/SignInPage";
-import BusinessRegPage from "../../pages/BusinessRegPage";
 import MyCardsPage from "../../pages/MyCardsPage";
 import SignUpPage from "../../pages/SignUpPage";
 import LogoApp from "../../logo/logoApp.png";
@@ -33,13 +32,6 @@ function NavBarComp({ setUserCallback, user }) {
                   RealEstateNow
                 </Navbar.Brand>
                 <Nav.Link
-                  to="BusinessRegPage"
-                  as={Link}
-                  hidden={hideForUser(user)}
-                >
-                  Business Registration
-                </Nav.Link>
-                <Nav.Link
                   to="MyCardsPage"
                   as={Link}
                   hidden={hideForGuest(user)}
@@ -67,9 +59,6 @@ function NavBarComp({ setUserCallback, user }) {
           </Container>
         </Navbar>
         <Switch>
-          <Route path="/BusinessRegPage">
-            <BusinessRegPage />
-          </Route>
           <Route path="/MyCardsPage">
             <MyCardsPage />
           </Route>

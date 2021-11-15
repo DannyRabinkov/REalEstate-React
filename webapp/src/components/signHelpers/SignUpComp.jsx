@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { notify } from "react-toastify";
 import { toast } from "react-toastify";
 
-function SignUpComp({ text = "", clickHandler = (f) => f }) {
+function SignUpComp({ clickHandler = (f) => f }) {
   const notify = (message) => toast(message);
   return (
     <>
