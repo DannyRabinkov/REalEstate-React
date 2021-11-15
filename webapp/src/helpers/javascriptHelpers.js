@@ -8,6 +8,7 @@ export function hideForGuest(user) {
 
 export function logout(setUserCallback) {
   localStorage.clear();
+  window.location.reload(false);
   setUserCallback(undefined);
 }
 
