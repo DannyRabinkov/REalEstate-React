@@ -5,6 +5,7 @@ import { signInUser } from "../helpers/javascriptHelpers";
 import { getMeData } from "../helpers/javascriptHelpers";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 export default class SignInPage extends React.Component {
   constructor(props) {
@@ -34,12 +35,12 @@ export default class SignInPage extends React.Component {
     if (this.state.redirect) return <Redirect to="/" />;
     return (
       <>
-        <div className="container">
+        <Container>
           <h2 className="mainpageheader mt-2 mb-2">
             Sign in to you'r account! <GoSignIn />
           </h2>
           <SignInComp clickHandler={this.signIn} text="Sign-in" />
-        </div>
+        </Container>
       </>
     );
   }
