@@ -27,7 +27,7 @@ function CreateCardComp() {
       </Form.Group>
 
       <Button
-        variant="primary"
+        variant="danger"
         type="button"
         onClick={(e) => {
           e.preventDefault();

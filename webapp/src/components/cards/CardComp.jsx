@@ -1,4 +1,4 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
 import React from "react";
 import { deleteCard } from "../../helpers/javascriptHelpers";
 
@@ -22,7 +22,7 @@ export default class CardComp extends React.Component {
     if (this.state.deleted) return <React.Fragment />;
     else
       return (
-        <div className="container">
+        <Container>
           <Card className="Card">
             <Card.Img
               variant="top"
@@ -32,19 +32,21 @@ export default class CardComp extends React.Component {
               src={this.props.card.bizImage}
             />{" "}
             <Card.Body>
-              <Card.Title> {this.props.card.bizName} </Card.Title>{" "}
-              <Card.Text> {this.props.card.bizDescription} </Card.Text>{" "}
-              <Card.Text> {this.props.card.bizAddress} </Card.Text>{" "}
-              <Card.Text> {this.props.card.bizPhone} </Card.Text>{" "}
+              <Card.Title>TITLE: {this.props.card.bizName} </Card.Title>{" "}
+              <Card.Text>
+                DESCRIPTION: {this.props.card.bizDescription}{" "}
+              </Card.Text>{" "}
+              <Card.Text>ADDRESS: {this.props.card.bizAddress} </Card.Text>{" "}
+              <Card.Text>PHONE: {this.props.card.bizPhone} </Card.Text>{" "}
               <Button
-                variant="primary"
+                variant="secondary"
                 onClick={() => this.deleteCardEvent(this.props.card._id)}
               >
                 Remove this card{" "}
               </Button>{" "}
             </Card.Body>{" "}
           </Card>
-        </div>
+        </Container>
       );
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import CardComp from "./CardComp";
 import { getUserCard } from "../../helpers/javascriptHelpers";
+import { Container } from "react-bootstrap";
 
 export default class CardsCont extends React.Component {
   constructor(props) {
@@ -27,10 +28,6 @@ export default class CardsCont extends React.Component {
   render() {
     if (!this.state.didAjax) this.getCards();
 
-    return (
-      <div id="cardsCont" className="container">
-        {this.state.cardList}
-      </div>
-    );
+    return <Container id="cardsCont">{this.state.cardList}</Container>;
   }
 }
