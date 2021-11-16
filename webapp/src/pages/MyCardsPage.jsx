@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Container, Button } from "react-bootstrap";
 import CardsCont from "../components/cards/CardsCont";
 import CreateCardComp from "../components/cards/CreateCardComp";
-import { Redirect } from "react-router-dom";
+/* import { Redirect } from "react-router-dom"; */
 
 export default class MyCardsPage extends React.Component {
   constructor(props) {
@@ -12,20 +12,20 @@ export default class MyCardsPage extends React.Component {
     this.state = {
       isAddMode: false,
     };
-    this.state = { redirect: false };
+    /* this.state = { redirect: false }; */
     this.insertCard = this.insertCard.bind(this);
     this.hideOrShow = this.hideOrShow.bind(this);
   }
 
   insertCard = (data) => {
     creatNewCard(data, (data) => {
-      /*  if (data._id) {
+      if (data._id) {
         toast.success("Card Created Successfully", {
           onClose: () => this.setState({ redirect: true }),
         });
       } else {
         toast.error("Error card was not created");
-      } */
+      }
     });
   };
 
@@ -38,7 +38,7 @@ export default class MyCardsPage extends React.Component {
   };
 
   render() {
-    if (this.state.redirect) return <Redirect to="/" />;
+    /* if (this.state.redirect) return <Redirect to="/" />; */
     return (
       <>
         <Container>

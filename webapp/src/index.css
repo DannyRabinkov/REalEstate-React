@@ -55,6 +55,6 @@ form {
   font-family: serif;
 }
 
-Navbar {
-  color: #ee6c4d;
+.btnsLeft {
+  text-align: left;
 }
