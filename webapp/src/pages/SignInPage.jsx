@@ -10,7 +10,7 @@ import { Container } from "react-bootstrap";
 export default class SignInPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { redirect: false };
+    /* this.state = { redirect: false }; */
     this.signIn = this.signIn.bind(this);
   }
   signIn = (data) => {
@@ -19,12 +19,11 @@ export default class SignInPage extends React.Component {
         toast.success(
           "Welcome to U",
           {
-            onOpen: () => window.location.reload(false),
-          },
-          this.setState({ redirect: true })
+            onClose: () => (window.location.href = "/"),
+          }
+          /* this.setState({ redirect: true }) */
         );
         localStorage.setItem("token", response.token);
-        getMeData(response.token);
       } else {
         toast.error("Fail to log in");
       }
@@ -32,7 +31,7 @@ export default class SignInPage extends React.Component {
   };
 
   render() {
-    if (this.state.redirect) return <Redirect to="/" />;
+    /* if (this.state.redirect) return <Redirect to="/" />; */
     return (
       <>
         <Container>

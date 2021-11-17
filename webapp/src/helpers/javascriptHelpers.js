@@ -9,7 +9,7 @@ export function hideForGuest(user) {
 export function logout(setUserCallback) {
   localStorage.clear();
   setUserCallback(undefined);
-  window.location.reload(false);
+  window.location.href = "/";
 }
 
 let baseUrl = "http://localhost:3000";

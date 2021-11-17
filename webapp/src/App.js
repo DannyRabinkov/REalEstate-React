@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <NavBarComp setUserCallback={setUser} user={user} />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
       <FooterComp />
     </div>
   );
