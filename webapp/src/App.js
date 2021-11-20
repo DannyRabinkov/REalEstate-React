@@ -12,7 +12,6 @@ function App() {
     if (localStorage.getItem("token") != null)
       getMeData(localStorage.getItem("token"), (data) => {
         setUser(data);
-        /* setUser(data); */
       });
   });
 

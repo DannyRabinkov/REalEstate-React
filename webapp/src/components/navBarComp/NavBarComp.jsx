@@ -11,6 +11,7 @@ import {
   hideForGuest,
   logout,
 } from "../../helpers/javascriptHelpers.js";
+import { toast } from "react-toastify";
 
 function NavBarComp({ setUserCallback, user }) {
   return (
@@ -47,10 +48,14 @@ function NavBarComp({ setUserCallback, user }) {
                   Sign-Up
                 </Nav.Link>
                 <Nav.Link
-                  to="/"
-                  as={Link}
+                  /* to="/"
+                  as={Link} */
                   hidden={hideForGuest(user)}
-                  onClick={() => logout(setUserCallback)}
+                  onClick={() =>
+                    toast.info("Goodbye!", {
+                      onClose: () => logout(setUserCallback),
+                    })
+                  }
                 >
                   Logout
                 </Nav.Link>

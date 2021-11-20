@@ -55,7 +55,9 @@ function registerCard() {
   const data = getInputData();
   creatNewCard(data, (data) => {
     if (data._id) {
-      toast.success("Card Created Successfully");
+      toast.success("Card Created Successfully", {
+        onClose: () => window.location.reload(false),
+      });
     } else {
       toast.error("Error Card was not created");
     }
