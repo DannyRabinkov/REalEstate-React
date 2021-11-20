@@ -49,6 +49,14 @@ export function getUserCard(callback) {
     .then((response) => callback(response))
     .catch((error) => callback(error));
 }
+export function getAllUsersCard(callback) {
+  let url = baseUrl + "/api/cards/allUsersCards";
+  let obj = EmptyGETRequest();
+  fetch(url, obj)
+    .then((response) => response.json())
+    .then((response) => callback(response))
+    .catch((error) => callback(error));
+}
 
 export function signInUser(data, callback) {
   let url = baseUrl + "/api/auth";

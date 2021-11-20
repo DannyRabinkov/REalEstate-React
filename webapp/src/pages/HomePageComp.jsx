@@ -3,12 +3,16 @@ import React from "react";
 import { BsHeartFill } from "react-icons/bs";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import LikedCards from "../components/cards/LikedCards";
+import HomeCards from "../components/cards/HomeCards";
 
 export default class HomePageComp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLikedMode: false,
+    };
+    this.state = {
+      isHomedMode: true,
     };
     this.hideOrShow = this.hideOrShow.bind(this);
   }
@@ -34,15 +38,18 @@ export default class HomePageComp extends React.Component {
               style={{ color: "#98c1d9", backgroundColor: "#ee6c4d" }}
               onClick={() => {
                 this.setState({ isLikedMode: true });
+                this.setState({ isHomedMode: false });
               }}
             >
               Liked <BsHeartFill />
             </Button>
+            {this.state.isHomedMode && <HomeCards />}
             <Button
               style={{ color: "#98c1d9", backgroundColor: "#3d5a80" }}
               hidden={this.hideOrShow()}
               onClick={() => {
                 this.setState({ isLikedMode: false });
+                this.setState({ isHomedMode: true });
               }}
             >
               {" "}
