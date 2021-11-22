@@ -2,7 +2,6 @@ import { Button, Container } from "react-bootstrap";
 import React from "react";
 import { BsHeartFill } from "react-icons/bs";
 import { RiArrowGoBackFill } from "react-icons/ri";
-import LikedCardsPage from "../components/cards/LikedCardsPage";
 import CardsCont from "../components/cards/CardsCont";
 
 export default class HomePageComp extends React.Component {
@@ -56,7 +55,7 @@ export default class HomePageComp extends React.Component {
             </Button>
           </div>
           <Container className="p-0">
-            {this.state.isLikedMode && <LikedCardsPage />}
+            {this.state.isLikedMode && <CardsCont FetchType="Liked" />}
           </Container>
         </Container>
       </>
