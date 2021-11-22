@@ -20,11 +20,15 @@ router.get("/all", auth, async (req, res) => {
   res.send(cards);
 });
 
-router.get("/allUsersCards", auth, async (req, res) => {
+router.get("/allUsersCards", async (req, res) => {
   let cards = await Card.find({
     // this condition is if we want that all cards will be shown
   });
+
   if (!cards) return res.status(404).send("The business cards wasn't found");
+  /* else {
+    cards.user_id = req.user.name;
+  } */
   res.send(cards);
 });
 
