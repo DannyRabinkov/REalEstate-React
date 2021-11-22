@@ -1,6 +1,7 @@
 import { Card, Button, Container } from "react-bootstrap";
 import React from "react";
 import { deleteCard } from "../../helpers/javascriptHelpers";
+import { BsHeartFill } from "react-icons/bs";
 
 export default class CardComp extends React.Component {
   constructor(props) {
@@ -30,21 +31,28 @@ export default class CardComp extends React.Component {
                 width: "16rem",
               }}
               src={this.props.card.bizImage}
-            />{" "}
+            />
             <Card.Body>
-              <Card.Title>TITLE: {this.props.card.bizName} </Card.Title>{" "}
+              <Card.Title>TITLE: {this.props.card.bizName} </Card.Title>
               <Card.Text>
-                DESCRIPTION: {this.props.card.bizDescription}{" "}
-              </Card.Text>{" "}
-              <Card.Text>ADDRESS: {this.props.card.bizAddress} </Card.Text>{" "}
-              <Card.Text>PHONE: {this.props.card.bizPhone} </Card.Text>{" "}
-              <Button
-                variant="secondary"
-                onClick={() => this.deleteCardEvent(this.props.card._id)}
-              >
-                Remove this card{" "}
-              </Button>{" "}
-            </Card.Body>{" "}
+                DESCRIPTION: {this.props.card.bizDescription}
+              </Card.Text>
+              <Card.Text>ADDRESS: {this.props.card.bizAddress} </Card.Text>
+              <Card.Text>PHONE: {this.props.card.bizPhone} </Card.Text>
+              {this.props.MyCards && (
+                <Button
+                  variant="secondary"
+                  onClick={() => this.deleteCardEvent(this.props.card._id)}
+                >
+                  Remove this card
+                </Button>
+              )}
+              {this.props.HomePage && (
+                <Button id="likeBtn" /* onClick={} */>
+                  Like <BsHeartFill />
+                </Button>
+              )}
+            </Card.Body>
           </Card>
         </Container>
       );

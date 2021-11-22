@@ -3,7 +3,7 @@ import React from "react";
 import { BsHeartFill } from "react-icons/bs";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import LikedCards from "../components/cards/LikedCards";
-import HomeCards from "../components/cards/HomeCards";
+import CardsCont from "../components/cards/CardsCont";
 
 export default class HomePageComp extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ export default class HomePageComp extends React.Component {
             >
               Liked <BsHeartFill />
             </Button>
-            {this.state.isHomedMode && <HomeCards />}
+            {this.state.isHomedMode && <CardsCont HomePage={true} />}
             <Button
               style={{ color: "#98c1d9", backgroundColor: "#3d5a80" }}
               hidden={this.hideOrShow()}
@@ -52,7 +52,6 @@ export default class HomePageComp extends React.Component {
                 this.setState({ isHomedMode: true });
               }}
             >
-              {" "}
               Back <RiArrowGoBackFill />
             </Button>
           </div>
