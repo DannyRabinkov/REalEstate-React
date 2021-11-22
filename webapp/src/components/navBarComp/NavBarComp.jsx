@@ -29,7 +29,7 @@ function NavBarComp({ setUserCallback, user }) {
                     width="30"
                     height="30"
                     className="d-inline-block align-top"
-                  />{" "}
+                  />
                   RealEstateNow
                 </Navbar.Brand>
                 <Nav.Link
