@@ -3,7 +3,7 @@ import CardComp from "./CardComp";
 import { getUserCard } from "../../helpers/javascriptHelpers";
 import { Container } from "react-bootstrap";
 
-export default class LikedCards extends React.Component {
+export default class LikedCardsPage extends React.Component {
   constructor(props) {
     super(props);
     this.printRes = this.printRes.bind(this);
@@ -20,7 +20,9 @@ export default class LikedCards extends React.Component {
   printRes = (data) => {
     if (typeof data != "undefined" && data.length > 0) {
       //temp array for parsed card elements
-      const tempArr = data.map((_card) => <CardComp card={_card}></CardComp>);
+      const tempArr = data.map((_card) => (
+        <CardComp card={_card} Liked={true}></CardComp>
+      ));
       this.setState({ cardList: tempArr, didAjax: true });
     }
   };
