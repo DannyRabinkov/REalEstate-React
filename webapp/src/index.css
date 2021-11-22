@@ -58,3 +58,8 @@ form {
 .btnsLeft {
   text-align: left;
 }
+
+#toggle-check:checked {
+  background-color: red;
+
+}
