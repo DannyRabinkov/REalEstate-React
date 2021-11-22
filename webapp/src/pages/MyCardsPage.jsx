@@ -34,7 +34,7 @@ function MyCardsPage() {
           Create new card
         </Button>
         <Container className="p-0">
-          {!isAddMode && <CardsCont MyCards={true} />}
+          {!isAddMode && <CardsCont FetchType="Personal" />}
           {isAddMode && (
             <CreateCardComp clickHandler={insertCard} backToPage={setAddMode} />
           )}

@@ -39,7 +39,7 @@ export default class CardComp extends React.Component {
               </Card.Text>
               <Card.Text>ADDRESS: {this.props.card.bizAddress} </Card.Text>
               <Card.Text>PHONE: {this.props.card.bizPhone} </Card.Text>
-              {this.props.MyCards && (
+              {this.props.FetchType == "Personal" && (
                 <Button
                   variant="secondary"
                   onClick={() => this.deleteCardEvent(this.props.card._id)}
@@ -47,7 +47,7 @@ export default class CardComp extends React.Component {
                   Remove this card
                 </Button>
               )}
-              {this.props.HomePage && (
+              {this.props.FetchType == "Home" && (
                 <Button id="likeBtn" /* onClick={} */>
                   Like <BsHeartFill />
                 </Button>

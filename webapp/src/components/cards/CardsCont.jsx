@@ -1,6 +1,6 @@
 import React from "react";
 import CardComp from "./CardComp";
-import { getUserCard } from "../../helpers/javascriptHelpers";
+import { getUserCard, getAllUsersCard } from "../../helpers/javascriptHelpers";
 import { Container } from "react-bootstrap";
 
 export default class CardsCont extends React.Component {
@@ -14,7 +14,9 @@ export default class CardsCont extends React.Component {
   }
 
   getCards = () => {
-    getUserCard(this.printRes);
+    if (this.props.FetchType == "Personal") getUserCard(this.printRes);
+    //if(this.props.FetchType == "Like") geLikedCards(this.printRes);
+    if (this.props.FetchType == "Home") getAllUsersCard(this.printRes);
   };
 
   printRes = (data) => {

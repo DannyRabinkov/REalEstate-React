@@ -43,7 +43,7 @@ export default class HomePageComp extends React.Component {
             >
               Liked <BsHeartFill />
             </Button>
-            {this.state.isHomedMode && <CardsCont HomePage={true} />}
+            {this.state.isHomedMode && <CardsCont FetchType="Home" />}
             <Button
               style={{ color: "#98c1d9", backgroundColor: "#3d5a80" }}
               hidden={this.hideOrShow()}
