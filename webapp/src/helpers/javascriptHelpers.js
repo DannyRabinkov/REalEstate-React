@@ -1,3 +1,5 @@
+let baseUrl = "http://localhost:3000";
+
 export function hideForUser(user) {
   return typeof user === "undefined" ? "" : "hidden";
 }
@@ -6,13 +8,16 @@ export function hideForGuest(user) {
   return typeof user === "undefined" ? "hidden" : "";
 }
 
+export function isLoggedIn() {
+  let isLogged = localStorage.getItem("token") != null ? true : false;
+  return isLogged;
+}
+
 export function logout(setUserCallback) {
   localStorage.clear();
   setUserCallback(undefined);
   window.location.href = "/";
 }
-
-let baseUrl = "http://localhost:3000";
 
 export function registerNewAccount(data, callback) {
   let url = baseUrl + "/api/users";
@@ -74,6 +79,19 @@ export function getMeData(token, callback) {
     .then((x) => x.json())
     .then((x) => callback(x))
     .catch((x) => callback(x));
+}
+
+export function getLikedDB(callback) {
+  let url = baseUrl + "/api/cards/all";
+  let obj = EmptyGETRequest();
+  fetch(url, obj)
+    .then((response) => response.json())
+    .then((response) => callback(response))
+    .catch((error) => callback(error));
+}
+
+export function addLikedDB(callback) {
+  callback({});
 }
 
 function getConfigurationForPostRequest(data) {

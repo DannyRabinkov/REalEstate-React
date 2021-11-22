@@ -2,6 +2,8 @@ import { Card, Button, Container } from "react-bootstrap";
 import React from "react";
 import { deleteCard } from "../../helpers/javascriptHelpers";
 import { BsHeartFill } from "react-icons/bs";
+import { addLiked } from "../../helpers/LikeHelper";
+import { toast } from "react-toastify";
 
 export default class CardComp extends React.Component {
   constructor(props) {
@@ -48,7 +50,14 @@ export default class CardComp extends React.Component {
                 </Button>
               )}
               {this.props.FetchType == "Home" && (
-                <Button id="likeBtn" /* onClick={} */>
+                <Button
+                  id="likeBtn"
+                  onClick={() =>
+                    addLiked(this.props.card._id, () => {
+                      toast.success("Added to likes");
+                    })
+                  }
+                >
                   Like <BsHeartFill />
                 </Button>
               )}
