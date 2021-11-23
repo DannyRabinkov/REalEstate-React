@@ -49,11 +49,12 @@ export default class CardComp extends React.Component {
                   Remove this card
                 </Button>
               )}
-              {this.props.FetchType == "Home" && (
+              {(this.props.FetchType == "Home" ||
+                this.props.FetchType == "Liked") && (
                 <Button
                   id="likeBtn"
                   onClick={() =>
-                    addLiked(this.props.card._id, () => {
+                    addLiked(this.props.card, () => {
                       toast.success("Added to likes");
                     })
                   }
