@@ -2,7 +2,7 @@ import { Card, Button, Container } from "react-bootstrap";
 import React from "react";
 import { deleteCard } from "../../helpers/javascriptHelpers";
 import { BsHeartFill } from "react-icons/bs";
-import { addLiked } from "../../helpers/LikeHelper";
+import { addLiked, removedLiked, isCardLikded } from "../../helpers/LikeHelper";
 import { toast } from "react-toastify";
 
 export default class CardComp extends React.Component {
@@ -10,6 +10,7 @@ export default class CardComp extends React.Component {
     super(props);
     this.state = {
       deleted: false,
+      isLiked: isCardLikded(this.props.card._id),
     };
   }
 
@@ -23,6 +24,8 @@ export default class CardComp extends React.Component {
 
   render() {
     if (this.state.deleted) return <React.Fragment />;
+    else if (!this.state.isLiked && this.props.FetchType == "Liked")
+      return <React.Fragment />;
     else
       return (
         <Container>
@@ -51,16 +54,31 @@ export default class CardComp extends React.Component {
               )}
               {(this.props.FetchType == "Home" ||
                 this.props.FetchType == "Liked") && (
-                <Button
-                  id="likeBtn"
-                  onClick={() =>
-                    addLiked(this.props.card, () => {
-                      toast.success("Added to likes");
-                    })
-                  }
-                >
-                  Like <BsHeartFill />
-                </Button>
+                <React.Fragment>
+                  <Button
+                    hidden={this.state.isLiked ? "hidden" : ""}
+                    onClick={() =>
+                      addLiked(this.props.card, () => {
+                        toast.success("Added to likes");
+                        this.setState({ isLiked: true });
+                      })
+                    }
+                  >
+                    Like <BsHeartFill />
+                  </Button>
+
+                  <Button
+                    hidden={this.state.isLiked ? "" : "hidden"}
+                    onClick={() =>
+                      removedLiked(this.props.card, () => {
+                        toast.success("Removed from likes");
+                        this.setState({ isLiked: false });
+                      })
+                    }
+                  >
+                    Unlike <BsHeartFill />
+                  </Button>
+                </React.Fragment>
               )}
             </Card.Body>
           </Card>

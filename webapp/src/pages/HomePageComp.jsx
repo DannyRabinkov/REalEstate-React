@@ -9,8 +9,6 @@ export default class HomePageComp extends React.Component {
     super(props);
     this.state = {
       isLikedMode: false,
-    };
-    this.state = {
       isHomedMode: true,
     };
     this.hideOrShow = this.hideOrShow.bind(this);

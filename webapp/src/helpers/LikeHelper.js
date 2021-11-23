@@ -43,3 +43,43 @@ function addLikedLocal(cardObject, callback) {
   localStorage.setItem("LikedCards", JSON.stringify(likedList));
   callback();
 }
+
+export function isCardLikded(cardId) {
+  let isLiked = false;
+
+  /* 
+  if (isLoggedIn()) {
+    isCardLikedDB(cardId);
+  } else {
+    isCardLikedLocal(cardId);
+  } */
+  isLiked = isCardLikedLocal(cardId);
+  return isLiked;
+}
+
+function isCardLikedLocal(cardId) {
+  let likedList = getLikedLocal();
+  let card = likedList.find((card) => card._id == cardId);
+  if (typeof card !== "undefined") {
+    return true;
+  }
+  return false;
+}
+
+export function removedLiked(cardId, callback) {
+  removeLikedLocal(cardId, callback);
+  /* 
+  if (isLoggedIn()) {
+    removeLikedDB(cardObject, callback);
+  } else {
+    removeLikedLocal(cardObject, callback);
+  } */
+}
+
+function removeLikedLocal(cardId, callback) {
+  let likedList = getLikedLocal();
+  let index = likedList.indexOf((card) => card._id == cardId);
+  likedList.splice(index, 1);
+  localStorage.setItem("LikedCards", JSON.stringify(likedList));
+  callback();
+}
