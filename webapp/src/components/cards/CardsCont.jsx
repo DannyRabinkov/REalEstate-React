@@ -15,11 +15,15 @@ export default class CardsCont extends React.Component {
   }
 
   getCards = () => {
-    if (this.props.FetchType == "Personal") getUserCard(this.printRes);
+    if (this.props.FetchType == "Personal") {
+      getUserCard(this.printRes);
+    }
     if (this.props.FetchType == "Liked") {
       getLiked(this.printRes);
     }
-    if (this.props.FetchType == "Home") getAllUsersCard(this.printRes);
+    if (this.props.FetchType == "Home") {
+      getAllUsersCard(this.printRes);
+    }
   };
 
   printRes = (data) => {

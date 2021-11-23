@@ -4,14 +4,11 @@ const _ = require("lodash");
 const express = require("express");
 const router = express.Router();
 
-// router.get("/:id", auth, async (req, res) => {
-//   let card = await Card.findOne({
-//     bizNumber: req.params.id,
-//     user_id: req.user._id,
-//   });
-//   if (!card) return res.status(404).send("The business card wasn't found");
-//   res.send(card);
-// });
+/* router.get("/:id", async (req, res) => {
+  let card = await Card.find({});
+  if (!card) return res.status(404).send("The business card wasn't found");
+  res.send(card);
+}); */
 router.get("/all", auth, async (req, res) => {
   let cards = await Card.find({
     user_id: req.user._id, // this condition is if we want that only the owner of the card will get it
@@ -32,10 +29,10 @@ router.get("/allUsersCards", async (req, res) => {
   res.send(cards);
 });
 
-router.get("/:id", auth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   let card = await Card.findOne({
     _id: req.params.id,
-    user_id: req.user._id, // this condition is if we want that only the owner of the card will get it
+    /* user_id: req.user._id, */ // this condition is if we want that only the owner of the card will get it
   });
   if (!card) return res.status(404).send("The business card wasn't found");
   res.send(card);
