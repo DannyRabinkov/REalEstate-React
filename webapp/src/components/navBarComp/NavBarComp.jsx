@@ -13,7 +13,7 @@ import {
 } from "../../helpers/javascriptHelpers.js";
 import { toast } from "react-toastify";
 
-function NavBarComp({ setUserCallback, user }) {
+function NavBarComp() {
   return (
     <Router>
       <>
@@ -32,28 +32,24 @@ function NavBarComp({ setUserCallback, user }) {
                   />
                   RealEstateNow
                 </Navbar.Brand>
-                <Nav.Link
-                  to="MyCardsPage"
-                  as={Link}
-                  hidden={hideForGuest(user)}
-                >
+                <Nav.Link to="MyCardsPage" as={Link} hidden={hideForGuest()}>
                   My-Cards
                 </Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link to="SignInPage" as={Link} hidden={hideForUser(user)}>
+                <Nav.Link to="SignInPage" as={Link} hidden={hideForUser()}>
                   Sign-In
                 </Nav.Link>
-                <Nav.Link to="SignUpPage" as={Link} hidden={hideForUser(user)}>
+                <Nav.Link to="SignUpPage" as={Link} hidden={hideForUser()}>
                   Sign-Up
                 </Nav.Link>
                 <Nav.Link
                   /* to="/"
                   as={Link} */
-                  hidden={hideForGuest(user)}
+                  hidden={hideForGuest()}
                   onClick={() =>
                     toast.info("Goodbye!", {
-                      onClose: () => logout(setUserCallback),
+                      onClose: () => logout(),
                     })
                   }
                 >

@@ -1,11 +1,13 @@
 let baseUrl = "http://localhost:3000";
 
-export function hideForUser(user) {
-  return typeof user === "undefined" ? "" : "hidden";
+export function hideForUser() {
+  let user = localStorage.getItem("token");
+  return user === null ? "" : "hidden";
 }
 
-export function hideForGuest(user) {
-  return typeof user === "undefined" ? "hidden" : "";
+export function hideForGuest() {
+  let user = localStorage.getItem("token");
+  return user === null ? "hidden" : "";
 }
 
 export function isLoggedIn() {
@@ -13,9 +15,8 @@ export function isLoggedIn() {
   return isLogged;
 }
 
-export function logout(setUserCallback) {
+export function logout() {
   localStorage.clear();
-  setUserCallback(undefined);
   window.location.href = "/";
 }
 
