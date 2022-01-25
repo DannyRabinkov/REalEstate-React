@@ -1,6 +1,5 @@
 import validateSignUp from "./signUpHelper";
 import { Form, Button } from "react-bootstrap";
-import { notify } from "react-toastify";
 import { toast } from "react-toastify";
 
 function SignUpComp({ clickHandler = (f) => f }) {

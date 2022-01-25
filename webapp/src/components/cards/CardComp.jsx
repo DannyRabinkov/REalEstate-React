@@ -24,7 +24,7 @@ export default class CardComp extends React.Component {
 
   render() {
     if (this.state.deleted) return <React.Fragment />;
-    else if (!this.state.isLiked && this.props.FetchType == "Liked")
+    else if (!this.state.isLiked && this.props.FetchType === "Liked")
       return <React.Fragment />;
     else
       return (
@@ -44,7 +44,7 @@ export default class CardComp extends React.Component {
               </Card.Text>
               <Card.Text>ADDRESS: {this.props.card.bizAddress} </Card.Text>
               <Card.Text>PHONE: {this.props.card.bizPhone} </Card.Text>
-              {this.props.FetchType == "Personal" && (
+              {this.props.FetchType === "Personal" && (
                 <Button
                   variant="secondary"
                   onClick={() => this.deleteCardEvent(this.props.card._id)}
@@ -52,8 +52,8 @@ export default class CardComp extends React.Component {
                   Remove this card
                 </Button>
               )}
-              {(this.props.FetchType == "Home" ||
-                this.props.FetchType == "Liked") && (
+              {(this.props.FetchType === "Home" ||
+                this.props.FetchType === "Liked") && (
                 <React.Fragment>
                   <Button
                     hidden={this.state.isLiked ? "hidden" : ""}

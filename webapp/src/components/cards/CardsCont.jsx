@@ -15,13 +15,13 @@ export default class CardsCont extends React.Component {
   }
 
   getCards = () => {
-    if (this.props.FetchType == "Personal") {
+    if (this.props.FetchType === "Personal") {
       getUserCard(this.printRes);
     }
-    if (this.props.FetchType == "Liked") {
+    if (this.props.FetchType === "Liked") {
       getLiked(this.printRes);
     }
-    if (this.props.FetchType == "Home") {
+    if (this.props.FetchType === "Home") {
       getAllUsersCard(this.printRes);
     }
   };
@@ -39,6 +39,10 @@ export default class CardsCont extends React.Component {
   render() {
     if (!this.state.didAjax) this.getCards();
 
-    return <Container id="cardsCont">{this.state.cardList}</Container>;
+    return (
+      <Container id="cardsCont" key={Math.random().toString(36).substr(2, 9)}>
+        {this.state.cardList}
+      </Container>
+    );
   }
 }
