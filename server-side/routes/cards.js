@@ -23,16 +23,12 @@ router.get("/allUsersCards", async (req, res) => {
   });
 
   if (!cards) return res.status(404).send("The business cards wasn't found");
-  /* else {
-    cards.user_id = req.user.name;
-  } */
   res.send(cards);
 });
 
 router.get("/:id", async (req, res) => {
   let card = await Card.findOne({
     _id: req.params.id,
-    /* user_id: req.user._id, */ // this condition is if we want that only the owner of the card will get it
   });
   if (!card) return res.status(404).send("The business card wasn't found");
   res.send(card);
