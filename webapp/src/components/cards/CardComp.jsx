@@ -45,12 +45,15 @@ export default class CardComp extends React.Component {
               <Card.Text>ADDRESS: {this.props.card.bizAddress} </Card.Text>
               <Card.Text>PHONE: {this.props.card.bizPhone} </Card.Text>
               {this.props.FetchType === "Personal" && (
-                <Button
-                  variant="secondary"
-                  onClick={() => this.deleteCardEvent(this.props.card._id)}
-                >
-                  Remove this card
-                </Button>
+                <React.Fragment>
+                  <Button
+                    variant="secondary"
+                    onClick={() => this.deleteCardEvent(this.props.card._id)}
+                  >
+                    Remove this card
+                  </Button>
+                  <Button style={{ marginLeft: "10px" }}>Update</Button>
+                </React.Fragment>
               )}
               {(this.props.FetchType === "Home" ||
                 this.props.FetchType === "Liked") && (

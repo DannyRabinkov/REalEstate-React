@@ -30,7 +30,9 @@ export default class CardsCont extends React.Component {
     if (typeof data != "undefined" && data.length > 0) {
       //temp array for parsed card elements
       const tempArr = data.map((_card) => (
-        <CardComp card={_card} {...this.props}></CardComp>
+        <div key={Math.random().toString(36).substr(2, 9)}>
+          <CardComp card={_card} {...this.props}></CardComp>
+        </div>
       ));
       this.setState({ cardList: tempArr, didAjax: true });
     }

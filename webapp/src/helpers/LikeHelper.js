@@ -1,5 +1,3 @@
-import { getLikedDB, addLikedDB, isLoggedIn } from "./javascriptHelpers";
-
 export function getLiked(callback) {
   let likedCardsArr = getLikedLocal(callback);
 
@@ -59,7 +57,7 @@ export function isCardLikded(cardId) {
 
 function isCardLikedLocal(cardId) {
   let likedList = getLikedLocal();
-  let card = likedList.find((card) => card._id == cardId);
+  let card = likedList.find((card) => card._id === cardId);
   if (typeof card !== "undefined") {
     return true;
   }
@@ -78,7 +76,7 @@ export function removedLiked(cardId, callback) {
 
 function removeLikedLocal(cardId, callback) {
   let likedList = getLikedLocal();
-  let index = likedList.indexOf((card) => card._id == cardId);
+  let index = likedList.indexOf((card) => card._id === cardId);
   likedList.splice(index, 1);
   localStorage.setItem("LikedCards", JSON.stringify(likedList));
   callback();
