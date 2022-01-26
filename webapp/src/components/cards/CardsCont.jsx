@@ -29,11 +29,23 @@ export default class CardsCont extends React.Component {
   printRes = (data) => {
     if (typeof data != "undefined" && data.length > 0) {
       //temp array for parsed card elements
-      const tempArr = data.map((_card) => (
-        <div key={Math.random().toString(36).substr(2, 9)}>
-          <CardComp card={_card} {...this.props}></CardComp>
-        </div>
-      ));
+      const tempArr = data
+        .filter((cards) => {
+          if (this.props.searcher === "") {
+            return cards;
+          } else if (
+            cards.bizName
+              .toLowerCase()
+              .includes(this.props.searcher.toLowerCase())
+          ) {
+            return cards;
+          }
+        })
+        .map((_card) => (
+          <div key={Math.random().toString(36).substr(2, 9)}>
+            <CardComp card={_card} {...this.props}></CardComp>
+          </div>
+        ));
       this.setState({ cardList: tempArr, didAjax: true });
     }
   };

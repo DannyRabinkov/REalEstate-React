@@ -10,6 +10,7 @@ export default class HomePageComp extends React.Component {
     this.state = {
       isLikedMode: false,
       isHomedMode: true,
+      isSearch: "",
     };
     this.hideOrShow = this.hideOrShow.bind(this);
   }
@@ -29,6 +30,16 @@ export default class HomePageComp extends React.Component {
           <h2 className="mainpageheader mt-2 mb-2">
             Fined you'r next appartment!!
           </h2>
+          <div className="searchBox">
+            <input
+              type="text"
+              placeholder="search..."
+              onChange={(e) => {
+                this.setState({ isSearch: e.target.value });
+              }}
+            />
+            <Button>search</Button>
+          </div>
           <div className="btnsLeft">
             <Button
               className="mx-2"
@@ -40,7 +51,9 @@ export default class HomePageComp extends React.Component {
             >
               Liked <BsHeartFill />
             </Button>
-            {this.state.isHomedMode && <CardsCont FetchType="Home" />}
+            {this.state.isHomedMode && (
+              <CardsCont searcher={this.state.isSearch} FetchType="Home" />
+            )}
             <Button
               style={{ color: "#98c1d9", backgroundColor: "#3d5a80" }}
               hidden={this.hideOrShow()}
