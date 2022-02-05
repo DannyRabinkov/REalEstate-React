@@ -73,6 +73,15 @@ export function signInUser(data, callback) {
     .catch((x) => callback(x));
 }
 
+export function signInSocket(data /* , callback */) {
+  let url = baseUrl + "/api/socket";
+  let obj = getConfigurationForPostRequest(data);
+  fetch(url, obj)
+    .then((x) => x.json())
+    .then((x) => /* callback */ x)
+    .catch((x) => /* callback */ x);
+}
+
 export function getMeData(token, callback) {
   if (!token) return;
   let url = baseUrl + "/api/users/me";

@@ -12,8 +12,17 @@ import {
   logout,
 } from "../../helpers/javascriptHelpers.js";
 import { toast } from "react-toastify";
+// import { useState } from "react";
+
+const io = require("socket.io-client");
+let socket = io.connect("http://10.0.0.9:3001/realestateapp", {
+  path: "/sqws",
+  autoConnect: false,
+});
 
 function NavBarComp() {
+  // const [token, setToken] = useState("");
+
   return (
     <Router>
       <>
@@ -64,7 +73,9 @@ function NavBarComp() {
             <MyCardsPage />
           </Route>
           <Route path="/SignInPage">
-            <SignInPage />
+            <SignInPage
+              socket={socket} /* token={(token) => setToken(token)} */
+            />
           </Route>
           <Route path="/SignUpPage">
             <SignUpPage />

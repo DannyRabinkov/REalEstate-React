@@ -10,6 +10,7 @@ export default class CardsCont extends React.Component {
     this.printRes = this.printRes.bind(this);
     this.state = {
       cardList: [],
+      // isSearch: "",
       didAjax: false,
     };
   }
@@ -28,19 +29,27 @@ export default class CardsCont extends React.Component {
 
   printRes = (data) => {
     if (typeof data != "undefined" && data.length > 0) {
+      // console.log(
+      //   data
+      //     // .filter((cards) =>
+
+      //     .map((cards) =>
+      //       this.props.searcher === ""
+      //         ? cards.bizName
+      //         : cards.bizName.this.props.searcher
+      //     )
+      // );
       //temp array for parsed card elements
-      const tempArr = data
-        .filter((cards) => {
-          if (this.props.searcher === "") {
-            return cards;
-          } else if (
-            cards.bizName
-              .toLowerCase()
-              .includes(this.props.searcher.toLowerCase())
-          ) {
-            return cards;
-          }
-        })
+      const tempArr = Object.values(data)
+        // .filter((_card) => {
+        // if (this.props.searcher === "") {
+        // return _card;
+        // } else if (
+        // this.props.searcher.toLowerCase().includes(this.props.searcher)
+        // )
+        // return _card.bizName;
+        // return _card.bizName;
+        // })
         .map((_card) => (
           <div key={Math.random().toString(36).substr(2, 9)}>
             <CardComp card={_card} {...this.props}></CardComp>

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "dependencies": {
+    "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "config": "^3.3.6",
     "cors": "^2.8.5",
@@ -11,7 +12,8 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^5.13.5",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "socket.io-client": "^4.4.1"
   },
   "devDependencies": {},
   "scripts": {

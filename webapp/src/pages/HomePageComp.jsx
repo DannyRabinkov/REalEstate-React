@@ -13,6 +13,7 @@ export default class HomePageComp extends React.Component {
       isSearch: "",
     };
     this.hideOrShow = this.hideOrShow.bind(this);
+    this.searchParam = this.searchParam.bind(this);
   }
 
   hideOrShow = () => {
@@ -21,6 +22,12 @@ export default class HomePageComp extends React.Component {
     } else {
       return "";
     }
+  };
+
+  searchParam = () => {
+    let searchVal = document.getElementById("inputSearch").value;
+    this.setState({ isSearch: searchVal });
+    console.log(this.state.isSearch);
   };
 
   render() {
@@ -32,13 +39,16 @@ export default class HomePageComp extends React.Component {
           </h2>
           <div className="searchBox">
             <input
+              id="inputSearch"
               type="text"
               placeholder="search..."
-              onChange={(e) => {
-                this.setState({ isSearch: e.target.value });
-              }}
+              // onChange={(e) => {
+              //   // e.preventDefault();
+              //   this.setState({ isSearch: e.target.value });
+              //   console.log(this.state.isSearch);
+              // }}
             />
-            <Button>search</Button>
+            <Button onClick={this.searchParam}>search</Button>
           </div>
           <div className="btnsLeft">
             <Button
@@ -52,7 +62,11 @@ export default class HomePageComp extends React.Component {
               Liked <BsHeartFill />
             </Button>
             {this.state.isHomedMode && (
-              <CardsCont searcher={this.state.isSearch} FetchType="Home" />
+              <CardsCont
+                // searchMode={this.state.isSearchdMode}
+                searcher={this.state.isSearch}
+                FetchType="Home"
+              />
             )}
             <Button
               style={{ color: "#98c1d9", backgroundColor: "#3d5a80" }}
