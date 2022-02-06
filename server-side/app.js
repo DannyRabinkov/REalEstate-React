@@ -14,14 +14,6 @@ const http = require("http").Server(app);
 // autoConnect: false,
 // });
 
-let appData = {
-  appname: "realestateApp",
-  server_host: "localhost/3001",
-  client_host: "localhost/3002",
-  auth_path: "realestate",
-};
-// socket.emit("addApp", appData);
-
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", auth);

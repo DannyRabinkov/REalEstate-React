@@ -1,19 +1,22 @@
-const auth = require("../middleware/auth");
+// const auth = require("../middleware/auth");
 const { User, validateUser, validateCards } = require("../models/user");
 const express = require("express");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const router = express.Router();
 
-router.post("/", async (req, res) => {
-  let user = await User.findOne({ email: req.body.email });
-  let authSoc;
-  if (user) {
-    console.log("GOT HERE!!");
-    user.auth = User.findById(user._id).select("-password");
-    authSoc = user.auth;
-    console.log(authSoc);
-    return res.send(user);
+router.post("/auth", async (req, res) => {
+  const decoded = jwt.verify(req.body.token, config.get("jwtKey"));
+  try {
+    const user = await User.findById(decoded._id).select("-password");
+    if (user) {
+      console.log("valid");
+      return res.status(200).send({ valid: true });
+    }
+  } catch (error) {
+    // console.log(error);
   }
-  console.log("DIDNT ENTERED!");
-  //   console.log("user token!", userToken);
+  console.log("invalid");
+  return res.status(400).send({ valid: false });
 });
 module.exports = router;

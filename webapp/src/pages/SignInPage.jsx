@@ -13,14 +13,9 @@ export default class SignInPage extends React.Component {
   signIn = (data) => {
     signInUser(data, (response) => {
       if (response.token) {
-        this.props.socket.connect();
         toast.success("Welcome to U", {
           onClose: () => (window.location.href = "/"),
         });
-        localStorage.setItem("token", response.token);
-        this.props.socket.auth = { token: response.token };
-        signInSocket(data);
-        // console.log(signInSocket(data));
       } else {
         toast.error("Fail to log in");
       }

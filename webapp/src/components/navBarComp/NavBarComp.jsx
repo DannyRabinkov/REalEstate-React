@@ -14,11 +14,18 @@ import {
 import { toast } from "react-toastify";
 // import { useState } from "react";
 
+const token = localStorage.getItem("token");
+
 const io = require("socket.io-client");
-let socket = io.connect("http://10.0.0.9:3001/realestateapp", {
+let socket = io.connect("http://192.168.1.58:3001/coolapp", {
   path: "/sqws",
   autoConnect: false,
 });
+
+if (token) {
+  socket.auth = { token: token };
+  socket.connect();
+}
 
 function NavBarComp() {
   // const [token, setToken] = useState("");
