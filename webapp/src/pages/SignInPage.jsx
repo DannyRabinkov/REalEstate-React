@@ -1,7 +1,7 @@
 import React from "react";
 import SignInComp from "../components/signHelpers/SignInComp";
 import { GoSignIn } from "react-icons/go";
-import { signInSocket, signInUser } from "../helpers/javascriptHelpers";
+import { signInUser } from "../helpers/javascriptHelpers";
 import { toast } from "react-toastify";
 import { Container } from "react-bootstrap";
 
@@ -16,6 +16,7 @@ export default class SignInPage extends React.Component {
         toast.success("Welcome to U", {
           onClose: () => (window.location.href = "/"),
         });
+        localStorage.setItem("token", response.token);
       } else {
         toast.error("Fail to log in");
       }

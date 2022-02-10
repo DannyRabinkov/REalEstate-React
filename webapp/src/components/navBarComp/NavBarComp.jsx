@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 const token = localStorage.getItem("token");
 
 const io = require("socket.io-client");
-let socket = io.connect("http://192.168.1.58:3001/coolapp", {
+let socket = io.connect("http://192.168.1.58:3001/realestateapp", {
   path: "/sqws",
   autoConnect: false,
 });
@@ -28,8 +28,6 @@ if (token) {
 }
 
 function NavBarComp() {
-  // const [token, setToken] = useState("");
-
   return (
     <Router>
       <>
