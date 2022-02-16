@@ -17,9 +17,11 @@ export default class SignInPage extends React.Component {
           onClose: () => (window.location.href = "/"),
         });
         localStorage.setItem("token", response.token);
+        localStorage.setItem("userData", data.email);
       } else {
         toast.error("Fail to log in");
       }
+      console.log(data);
     });
   };
 

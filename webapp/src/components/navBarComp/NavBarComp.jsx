@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 // import { useState } from "react";
 
 const token = localStorage.getItem("token");
+const email = localStorage.getItem("userData");
 
 const io = require("socket.io-client");
 let socket = io.connect("http://192.168.1.58:3001/realestateapp", {
@@ -23,7 +24,7 @@ let socket = io.connect("http://192.168.1.58:3001/realestateapp", {
 });
 
 if (token) {
-  socket.auth = { token: token };
+  socket.auth = { token: token, email: email };
   socket.connect();
 }
 
