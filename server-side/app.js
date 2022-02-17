@@ -8,12 +8,6 @@ const express = require("express");
 const app = express();
 const http = require("http").Server(app);
 
-// const io = require("socket.io-client");
-// let socket = io.connect("http://10.0.0.9:3001/realestateapp", {
-// path: "/sqws",
-// autoConnect: false,
-// });
-
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", auth);
@@ -26,6 +20,6 @@ app.get("/", (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-http.listen(port, () =>
-  console.log(`Listening to port ${port}, click http://localhost:${port}`)
-);
+http.listen(port, () => {
+  console.log(`Listening to port ${port}, click http://localhost:${port}`);
+});

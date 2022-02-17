@@ -1,5 +1,5 @@
 // const auth = require("../middleware/auth");
-const { User, validateUser, validateCards } = require("../models/user");
+const { User } = require("../models/user");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const config = require("config");
